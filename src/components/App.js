@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Navbar, StoriesList } from "./";
 import { fetchStories } from "../features/stories/storiesSlice";
 import { useDispatch } from "react-redux";
+import {Routes, Route} from "react-router-dom"
+import SingleStory from "./SingleStory";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,11 @@ const App = () => {
         </div>
         <Navbar />
       </div>
-      <StoriesList />
+      <Routes>
+        <Route path="/" element={<StoriesList />}/>
+        <Route path="stories" element={<StoriesList />}/>
+        <Route path="stories/:storyId" element={<SingleStory/>}/>
+      </Routes>
     </div>
   );
 };
